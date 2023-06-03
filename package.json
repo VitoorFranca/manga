@@ -1,0 +1,59 @@
+{
+  "name": "clean-node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "engines": {
+    "node": "18"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start:dev": "NODE_PATH=./src ts-node-dev src/app/",
+    "start:prod": "ORM_ROOT_DIR=build NODE_PATH=./build node ./build/app/index.js",
+    "lintAndFormat": "eslint src/ --fix; prettier --write src/",
+    "test:for-script": "jest --detectOpenHandles --forceExit --verbose --coverage",
+    "test:dev": "jest --detectOpenHandles --coverage --watch",
+    "test:non-repository": "jest --detectOpenHandles --forceExit --verbose --coverage --testPathIgnorePatterns=/src/repository/ ",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "@fastify/compress": "^6.2.1",
+    "axios": "^0.26.0",
+    "dotenv": "^10.0.0",
+    "fastify": "^4.15.0",
+    "fastify-metrics": "^8.0.0",
+    "kafkajs": "1.15",
+    "pg": "^8.8.0",
+    "typeorm": "0.3.9",
+    "typeorm-naming-strategies": "^4.1.0",
+    "zod": "^3.11.6",
+    "reflect-metadata": "0.1.13"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/dotenv": "^8.2.0",
+    "@types/jest": "^27.0.0",
+    "@types/node": "16.11.10",
+    "@typescript-eslint/eslint-plugin": "5.36.1",
+    "@typescript-eslint/parser": "5.36.1",
+    "eslint": "8.23.0",
+    "eslint-plugin-import-helpers": "^1.2.1",
+    "eslint-plugin-node": "11.1.0",
+    "husky": ">=6",
+    "jest": "^27.0.0",
+    "jest-extended": "^1.1.0",
+    "jest-ts-auto-mock": "2.1.0",
+    "lint-staged": ">=10",
+    "pino-pretty": "^9.1.1",
+    "prettier": "^2.2.1",
+    "ts-auto-mock": "3.6.2",
+    "ts-jest": "^27.0.0",
+    "ts-node-dev": "^1.1.8",
+    "tslint": "^6.1.2",
+    "typescript": "4.5.2"
+  },
+  "lint-staged": {
+    "*": "eslint --fix",
+    "*.{js,css,md}": "prettier --write"
+  }
+}

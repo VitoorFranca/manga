@@ -1,0 +1,38 @@
+module.exports = {
+  clearMocks: true,
+  collectCoverage: false,
+  collectCoverageFrom: [
+    "**/*.{ts,tsx}",
+    "!**/node_modules/**",
+    "!**/public/**",
+    "!**/es/**",
+    "!**/driver/**",
+    "!**/domain/**",
+    "**/domain/Template/**",
+    "!**/app/**",
+    "!**/middleware/**",
+    "!**/api/index.ts",
+    "!**/worker/*",
+    "**/worker/publisher/*",
+    "**/worker/subscriber/*",
+    "!**/__tests__/**",
+    "!**/build/**",
+  ],
+  coverageReporters: ["json", "lcov", "text", "clover", "html"],
+  coverageThreshold: {
+    global: {
+      branches: 0,
+      functions: 0,
+      lines: 0,
+      statements: 0,
+    },
+  },
+  coverageDirectory: "./coverage",
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
+  modulePaths: ["<rootDir>"],
+  transform: {
+    "^.+\\.tsx?$": "ts-jest",
+  },
+  testMatch: ["**/__tests__/**/*(spec|test).[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
+  moduleFileExtensions: ["ts", "tsx", "js", "jsx"],
+};
